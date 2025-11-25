@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Muheb Kirwan | Senior Full Stack Developer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Muheb Kirwan, Senior Full Stack Developer specialized in Flutter, Web Development, and Automation." />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #050816;
+      --card: #0b1120;
+      --border: #1f2937;
+      --accent: #6366f1;
+      --accent-soft: #4f46e5;
+      --accent-grad: linear-gradient(135deg, #6366f1, #a855f7);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.9), transparent);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+    }
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 0.3rem 0.9rem;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 2.5rem;
+      padding: 3rem 0 2.5rem;
+      align-items: center;
+    }
+    .hero-title {
+      font-size: clamp(2.3rem, 4vw, 3.1rem);
+      margin-bottom: 0.8rem;
+    }
+    .hero-title span {
+      background: var(--accent-grad);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-text {
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.98rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: var(--accent-grad);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 18px 40px rgba(79,70,229,0.4);
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 50px rgba(99,102,241,0.55);
+    }
+    .btn.outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+      box-shadow: none;
+    }
+    .btn.outline:hover {
+      border-color: var(--accent);
+      box-shadow: 0 12px 28px rgba(15,23,42,0.7);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 26px 60px rgba(0,0,0,0.9);
+    }
+    .hero-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.5rem;
+    }
+    .chip {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: #020617;
+      border: 1px solid #1f2937;
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 2.6rem 0 1.5rem;
+    }
+    section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+    section h2 span {
+      color: var(--accent-soft);
+      margin-right: 0.25rem;
+    }
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.7rem;
+    }
+
+    /* ABOUT / SKILLS */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 1.8rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      padding: 1.1rem 1.1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.8rem;
+    }
+    .skill-item {
+      background: #020617;
+      border-radius: 0.8rem;
+      border: 1px solid #1f2937;
+      padding: 0.7rem 0.8rem;
+    }
+    .skill-item strong {
+      font-size: 0.9rem;
+    }
+    .skill-item p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      gap: 1rem;
+    }
+    .project-card {
+      background: var(--card);
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      padding: 1rem 1rem;
+      font-size: 0.88rem;
+    }
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.3rem;
+      gap: 0.5rem;
+    }
+    .project-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+    .project-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: #020617;
+      border: 1px solid #1f2937;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .project-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .project-links a {
+      font-size: 0.8rem;
+      margin-right: 0.7rem;
+      color: var(--accent-soft);
+    }
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* EXPERIENCE */
+    .timeline {
+      display: grid;
+      gap: 0.9rem;
+    }
+    .timeline-item {
+      border-left: 2px solid #1f2937;
+      padding-left: 0.8rem;
+      margin-left: 0.2rem;
+    }
+    .timeline-item h3 {
+      font-size: 0.96rem;
+      margin-bottom: 0.1rem;
+    }
+    .timeline-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 1.2rem;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .contact-box strong {
+      color: var(--text);
+    }
+    .contact-box a {
+      color: var(--accent-soft);
+      font-weight: 500;
+    }
+
+    footer {
+      padding: 1.6rem 0 1rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+      nav ul {
+        display: none; /* لتبسيطها في الموبايل حالياً */
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">MUHEB KIRWAN</div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="tag">Senior Full Stack Developer</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1 class="hero-title">
+          Building <span>mobile & web</span> solutions end-to-end.
+        </h1>
+        <p class="hero-text">
+          I am a Senior Full Stack Developer focused on Flutter, modern web development,
+          and backend APIs. I enjoy turning ideas into production-ready applications
+          with clean architecture and strong performance.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn" href="#projects">
+            View Projects
+          </a>
+          <a class="btn outline" href="mailto:muheb.kn@gmail.com">
+            Contact Me
+          </a>
+          <a class="btn outline" href="#cv">
+            Download CV (EN / AR / DE)
+          </a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h3 style="font-size:1rem; margin-bottom:0.4rem;">Current Tech Focus</h3>
+        <p style="font-size:0.83rem; color:#9ca3af;">
+          Flutter for cross-platform apps, Firebase for authentication & data,
+          and web technologies for dashboards and admin panels.
+        </p>
+        <div class="hero-chip-row">
+          <span class="chip">Flutter</span>
+          <span class="chip">Firebase</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">PHP</span>
+          <span class="chip">Python</span>
+          <span class="chip">Git & GitHub</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT & SKILLS -->
+    <section id="about">
+      <h2><span>//</span> About Me</h2>
+      <p class="section-sub">
+        Senior Full Stack Developer with a strong focus on delivering complete solutions, from UI/UX to backend and deployment.
+      </p>
+      <div class="two-col">
+        <div class="card">
+          <h3>Who I am</h3>
+          <p>
+            My name is <strong>Muheb Kirwan</strong>. I build mobile and web applications, backend APIs,
+            automation bots, and analytics dashboards. I like to work on clear, maintainable codebases and
+            to design architectures that can grow over time.
+          </p>
+          <br />
+          <p>
+            I have experience working independently and in teams, collaborating with non-technical stakeholders,
+            and turning business requirements into real, usable software.
+          </p>
+        </div>
+        <div class="card" id="skills">
+          <h3>Key Skills</h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <strong>Mobile (Flutter)</strong>
+              <p>Cross-platform apps, state management, clean architecture, Firebase integration.</p>
+            </div>
+            <div class="skill-item">
+              <strong>Frontend</strong>
+              <p>HTML, CSS, JavaScript, responsive UI, dashboards and admin layouts.</p>
+            </div>
+            <div class="skill-item">
+              <strong>Backend & APIs</strong>
+              <p>REST APIs, PHP/Laravel basics, Node.js basics, Firebase Functions.</p>
+            </div>
+            <div class="skill-item">
+              <strong>Databases</strong>
+              <p>Firestore, MySQL, SQLite, structured data modeling.</p>
+            </div>
+            <div class="skill-item">
+              <strong>Automation & Bots</strong>
+              <p>Telegram bots, Messenger bots, task automation with Python.</p>
+            </div>
+            <div class="skill-item">
+              <strong>Tools & Workflow</strong>
+              <p>Git/GitHub, Postman, Android Studio, VS Code, remote collaboration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2><span>//</span> Selected Projects</h2>
+      <p class="section-sub">
+        A selection of projects highlighting mobile development, web platforms, and automation.
+      </p>
+
+      <div class="projects-grid">
+        <!-- Masrofate -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-title">Masrofate – Personal Finance Management</div>
+            <span class="project-tag">Flutter · Firebase</span>
+          </div>
+          <p>
+            Cross-platform finance tracking app with Google Sign-In, Firestore integration,
+            expense categories, and monthly analytics.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/muhebkn/masrofate-finance-app" target="_blank">GitHub</a>
+          </div>
+        </article>
+
+        <!-- SparkWash -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-title">SparkWash – Car Wash Booking System</div>
+            <span class="project-tag">Flutter · REST API</span>
+          </div>
+          <p>
+            Car wash booking app where users select services, choose a time slot,
+            and manage their booking history with a clean UI.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/muhebkn/sparkwash-carwash-booking" target="_blank">GitHub</a>
+          </div>
+        </article>
+
+        <!-- Medica -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-title">Medica – Medical Appointment App</div>
+            <span class="project-tag">Flutter · Firebase</span>
+          </div>
+          <p>
+            Appointment booking application for doctors with notification reminders,
+            doctor profiles, and appointment tracking.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/muhebkn/medica" target="_blank">GitHub</a>
+          </div>
+        </article>
+
+        <!-- TechStore -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-title">TechStore – E-Commerce Web Platform</div>
+            <span class="project-tag">Web · PHP · MySQL</span>
+          </div>
+          <p>
+            Full e-commerce platform with product catalog, cart, orders, and an admin panel
+            for managing inventory and sales.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/muhebkn/techstore" target="_blank">GitHub</a>
+          </div>
+        </article>
+
+        <!-- SmartDashboard -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-title">SmartDashboard – Analytics Admin Panel</div>
+            <span class="project-tag">Web · JS · Charts</span>
+          </div>
+          <p>
+            Analytics dashboard for visualizing KPIs, financial metrics, and user activity
+            using interactive charts and filters.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/muhebkn/smart-dashboard" target="_blank">GitHub</a>
+          </div>
+        </article>
+
+        <!-- SmartComplaints -->
+        <article class="project-card">
+          <div class="project-header">
+            <div class="project-title">SmartComplaints – Automation Telegram Bot</div>
+            <span class="project-tag">Python · Bot API</span>
+          </div>
+          <p>
+            Telegram bot that collects complaints, stores them, and exports weekly reports
+            for supervisors to review and follow up.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/muhebkn/smart-complaints-bot" target="_blank">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <h2><span>//</span> Experience</h2>
+      <p class="section-sub">
+        Roles and responsibilities that shaped my experience as a Senior Full Stack Developer.
+      </p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Senior Full Stack Developer – Freelancer</h3>
+          <div class="timeline-meta">2019 – Present · Remote</div>
+          <p>
+            Building mobile apps, dashboards, and automation systems for clients.
+            Designing backends, integrating cloud services, and ensuring performance
+            and maintainability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CV DOWNLOAD PLACEHOLDER -->
+    <section id="cv">
+      <h2><span>//</span> CV Downloads</h2>
+      <p class="section-sub">
+        You can request my CV in English, Arabic, or German. Download links can be added here later.
+      </p>
+      <div class="card">
+        <p>
+          • CV (English) – <em>available on request</em><br />
+          • السيرة الذاتية (عربي) – <em>متاحة عند الطلب</em><br />
+          • Lebenslauf (Deutsch) – <em>auf Anfrage verfügbar</em>
+        </p>
+        <!--
+          لاحقاً عندما ترفع ملفات PDF على GitHub أو Google Drive:
+          استبدل الروابط هنا مثلاً:
+          <p><a href="LINK_TO_EN_PDF" target="_blank">Download English CV (PDF)</a></p>
+        -->
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2><span>//</span> Contact</h2>
+      <p class="section-sub">
+        Feel free to reach out regarding remote roles, freelance projects, or collaboration.
+      </p>
+      <div class="contact-box">
+        For collaboration or job opportunities, you can contact me directly:<br /><br />
+        <strong>Email:</strong>
+        <a href="mailto:muheb.kn@gmail.com">muheb.kn@gmail.com</a><br />
+        <strong>GitHub:</strong>
+        <a href="https://github.com/muhebkn" target="_blank">github.com/muhebkn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Muheb Kirwan · Senior Full Stack Developer
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
