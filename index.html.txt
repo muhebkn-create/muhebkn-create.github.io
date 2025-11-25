@@ -2,589 +2,691 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Muheb Kirwan | Senior Full Stack Developer</title>
+  <title>Muheb Kirwan | Full Stack Developer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio of Muheb Kirwan, Senior Full Stack Developer specialized in Flutter, Web Development, and Automation." />
+
+  <!-- يمكنك إضافة خط Google لاحقاً إن أحببت -->
   <style>
     :root {
-      --bg: #020617;
-      --bg-alt: #050816;
-      --card: #0b1120;
-      --border: #1f2937;
-      --accent: #6366f1;
-      --accent-soft: #4f46e5;
-      --accent-grad: linear-gradient(135deg, #6366f1, #a855f7);
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #4f46e5;
+      --accent-soft: #6366f1;
       --text: #e5e7eb;
       --muted: #9ca3af;
+      --card: #111827;
+      --radius-lg: 1.5rem;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
       color: var(--text);
       line-height: 1.6;
     }
+
     a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
 
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 1.25rem;
+      padding: 1.5rem;
     }
 
-    /* HEADER */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(to bottom, rgba(2,6,23,0.9), transparent);
-    }
-    .nav {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 0.75rem 0;
+      align-items: center;
+      padding: 1rem 0;
     }
+
     .logo {
       font-weight: 700;
-      letter-spacing: 0.18em;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      font-size: 0.85rem;
+      font-size: .9rem;
       color: var(--muted);
-    }
-    nav ul {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    nav a:hover {
-      color: var(--text);
     }
 
     .tag {
       border-radius: 999px;
-      padding: 0.3rem 0.9rem;
-      border: 1px solid var(--border);
-      font-size: 0.8rem;
+      padding: .3rem .9rem;
+      border: 1px solid #1f2937;
+      font-size: .8rem;
       color: var(--muted);
     }
 
-    /* HERO */
+    .lang-switch {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+      font-size: .8rem;
+    }
+
+    .lang-btn {
+      border-radius: 999px;
+      padding: .25rem .8rem;
+      border: 1px solid #1f2937;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: .8rem;
+      transition: .2s;
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       gap: 2.5rem;
-      padding: 3rem 0 2.5rem;
+      padding: 3rem 0 2rem;
       align-items: center;
     }
+
     .hero-title {
-      font-size: clamp(2.3rem, 4vw, 3.1rem);
-      margin-bottom: 0.8rem;
+      font-size: clamp(2.3rem, 4vw, 3rem);
+      margin-bottom: .8rem;
     }
+
     .hero-title span {
-      background: var(--accent-grad);
-      -webkit-background-clip: text;
-      color: transparent;
+      color: var(--accent-soft);
     }
+
     .hero-text {
       color: var(--muted);
       max-width: 32rem;
       margin-bottom: 1.5rem;
-      font-size: 0.98rem;
     }
+
     .hero-buttons {
       display: flex;
-      gap: 0.9rem;
+      gap: 1rem;
       flex-wrap: wrap;
+      margin-bottom: 1.5rem;
     }
+
     .btn {
       border-radius: 999px;
-      padding: 0.7rem 1.4rem;
-      font-size: 0.9rem;
+      padding: .7rem 1.3rem;
+      font-size: .9rem;
       cursor: pointer;
       border: 1px solid transparent;
-      background: var(--accent-grad);
+      background: var(--accent);
       color: white;
+      transition: .2s;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 18px 40px rgba(79,70,229,0.4);
-      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+      gap: .4rem;
     }
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 22px 50px rgba(99,102,241,0.55);
-    }
+
     .btn.outline {
       background: transparent;
       color: var(--text);
-      border-color: var(--border);
-      box-shadow: none;
+      border-color: #1f2937;
     }
-    .btn.outline:hover {
-      border-color: var(--accent);
-      box-shadow: 0 12px 28px rgba(15,23,42,0.7);
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(79, 70, 229, .35);
+    }
+
+    .hero-right {
+      position: relative;
     }
 
     .hero-card {
-      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
-      border-radius: 1.5rem;
+      background: linear-gradient(145deg, #111827, #020617);
+      border-radius: var(--radius-lg);
       padding: 1.5rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 26px 60px rgba(0,0,0,0.9);
+      border: 1px solid #1f2937;
+      box-shadow: 0 20px 40px rgba(0,0,0,.7);
     }
-    .hero-chip-row {
+
+    .hero-card h3 {
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    .hero-card p {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .chip-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-top: 0.5rem;
+      gap: .4rem;
     }
+
     .chip {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.6rem;
+      font-size: .75rem;
+      padding: .25rem .6rem;
       border-radius: 999px;
-      background: #020617;
+      background: #111827;
       border: 1px solid #1f2937;
       color: var(--muted);
     }
 
-    /* SECTIONS */
-    section {
-      padding: 2.6rem 0 1.5rem;
-    }
-    section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.6rem;
-    }
-    section h2 span {
-      color: var(--accent-soft);
-      margin-right: 0.25rem;
-    }
-    .section-sub {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 1.7rem;
+    .hero-3d {
+      position: absolute;
+      right: -10px;
+      top: -40px;
+      width: 120px;
+      height: 120px;
+      border-radius: 2rem;
+      border: 1px solid #1f2937;
+      box-shadow: 0 18px 35px rgba(0,0,0,.8);
+      object-fit: cover;
+      background: radial-gradient(circle at 30% 10%, #4f46e5, #020617);
     }
 
-    /* ABOUT / SKILLS */
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 1.8rem;
+    section {
+      padding: 2.5rem 0 1rem;
     }
-    .card {
-      background: var(--card);
-      border-radius: 1rem;
-      border: 1px solid var(--border);
-      padding: 1.1rem 1.1rem;
-      font-size: 0.9rem;
+
+    section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    section h2 span {
+      color: var(--accent-soft);
+    }
+
+    .section-sub {
+      font-size: .9rem;
       color: var(--muted);
+      margin-bottom: 1.8rem;
     }
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 0.6rem;
-      color: var(--text);
-    }
+
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 0.8rem;
-    }
-    .skill-item {
-      background: #020617;
-      border-radius: 0.8rem;
-      border: 1px solid #1f2937;
-      padding: 0.7rem 0.8rem;
-    }
-    .skill-item strong {
-      font-size: 0.9rem;
-    }
-    .skill-item p {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.25rem;
+      gap: .8rem;
     }
 
-    /* PROJECTS */
+    .skill-card, .project-card, .contact-box, .cv-card {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 1rem;
+      border: 1px solid #1f2937;
+    }
+
+    .skill-card h3 {
+      font-size: .95rem;
+      margin-bottom: .3rem;
+    }
+
+    .skill-card p {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
     .projects-grid {
       display: grid;
       gap: 1rem;
     }
-    .project-card {
-      background: var(--card);
-      border-radius: 1rem;
-      border: 1px solid var(--border);
-      padding: 1rem 1rem;
-      font-size: 0.88rem;
-    }
+
     .project-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.3rem;
-      gap: 0.5rem;
+      margin-bottom: .3rem;
+      gap: .5rem;
+      flex-wrap: wrap;
     }
+
     .project-title {
-      font-size: 0.98rem;
+      font-size: .95rem;
       font-weight: 600;
     }
+
     .project-tag {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.6rem;
+      font-size: .7rem;
+      padding: .2rem .5rem;
       border-radius: 999px;
-      background: #020617;
+      background: #111827;
       border: 1px solid #1f2937;
       color: var(--muted);
-      white-space: nowrap;
     }
+
     .project-card p {
-      font-size: 0.82rem;
+      font-size: .8rem;
       color: var(--muted);
-      margin-bottom: 0.5rem;
+      margin-bottom: .5rem;
     }
+
     .project-links a {
-      font-size: 0.8rem;
-      margin-right: 0.7rem;
+      font-size: .8rem;
+      margin-right: .7rem;
       color: var(--accent-soft);
     }
-    .project-links a:hover {
-      text-decoration: underline;
-    }
 
-    /* EXPERIENCE */
-    .timeline {
-      display: grid;
-      gap: 0.9rem;
-    }
-    .timeline-item {
-      border-left: 2px solid #1f2937;
-      padding-left: 0.8rem;
-      margin-left: 0.2rem;
-    }
-    .timeline-item h3 {
-      font-size: 0.96rem;
-      margin-bottom: 0.1rem;
-    }
-    .timeline-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
-    }
-
-    /* CONTACT */
     .contact-box {
-      background: var(--card);
-      border-radius: 1rem;
-      padding: 1.2rem;
-      border: 1px solid var(--border);
-      font-size: 0.9rem;
+      font-size: .9rem;
       color: var(--muted);
     }
-    .contact-box strong {
-      color: var(--text);
-    }
+
     .contact-box a {
       color: var(--accent-soft);
       font-weight: 500;
     }
 
     footer {
-      padding: 1.6rem 0 1rem;
-      font-size: 0.75rem;
+      padding: 1.5rem 0 1rem;
+      font-size: .75rem;
       color: var(--muted);
       text-align: center;
     }
 
-    @media (max-width: 900px) {
+    /* لغات */
+    [data-lang-block] { display: none; }
+    [data-lang-block].active { display: block; }
+
+    @media (max-width: 800px) {
       .hero {
         grid-template-columns: 1fr;
       }
-      .two-col {
-        grid-template-columns: 1fr;
+      .hero-3d {
+        position: static;
+        margin-bottom: 1rem;
+        width: 100px;
+        height: 100px;
       }
-      nav ul {
-        display: none; /* لتبسيطها في الموبايل حالياً */
+      .hero-right {
+        order: -1;
       }
     }
+
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
+  <div class="container">
+    <header>
       <div class="logo">MUHEB KIRWAN</div>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="tag">Senior Full Stack Developer</div>
-    </div>
-  </header>
 
-  <main class="container">
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <h1 class="hero-title">
-          Building <span>mobile & web</span> solutions end-to-end.
-        </h1>
-        <p class="hero-text">
-          I am a Senior Full Stack Developer focused on Flutter, modern web development,
-          and backend APIs. I enjoy turning ideas into production-ready applications
-          with clean architecture and strong performance.
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang-btn="en">EN</button>
+        <button class="lang-btn" data-lang-btn="ar">عربي</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO EN -->
+      <section class="hero" data-lang-block="en">
+        <div>
+          <div class="tag">Full Stack Developer</div>
+          <h1 class="hero-title">Building <span>mobile & web</span> experiences end-to-end.</h1>
+          <p class="hero-text">
+            I am a Full Stack Developer focused on Flutter, modern web development,
+            and backend APIs. I enjoy turning ideas into production-ready apps.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn" href="#projects-en">View Projects</a>
+            <a class="btn outline" href="mailto:muheb.kn@gmail.com">Contact Me</a>
+            <a class="btn outline" href="#cv-en">Download CV</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <!-- ضع هنا صورة 3D (مثلاً hero-3d.png في نفس المجلد) -->
+          <img src="hero-3d.png" alt="3D App Icon" class="hero-3d" />
+          <aside class="hero-card">
+            <h3>Currently working with</h3>
+            <p>Flutter for mobile, Firebase for auth & data, and Python / PHP for backend services.</p>
+            <div class="chip-row">
+              <span class="chip">Flutter</span>
+              <span class="chip">Firebase</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">Python</span>
+              <span class="chip">PHP</span>
+              <span class="chip">Git & GitHub</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- HERO AR -->
+      <section class="hero" data-lang-block="ar" dir="rtl">
+        <div>
+          <div class="tag">مطوّر فل ستاك</div>
+          <h1 class="hero-title"><span>تطبيقات موبايل</span> ومواقع ويب من الفكرة إلى الإنتاج.</h1>
+          <p class="hero-text">
+            أنا مهيب كيروان، مطوّر فل ستاك أعمل على Flutter وتطوير الويب وواجهات الـ API.
+            أركز على بناء حلول عملية بأداء جيد وكود منظم قابل للتطوير.
+          </p>
+          <div class="hero-buttons">
+            <a class="btn" href="#projects-ar">عرض الأعمال</a>
+            <a class="btn outline" href="mailto:muheb.kn@gmail.com">تواصل معي</a>
+            <a class="btn outline" href="#cv-ar">تحميل السيرة الذاتية</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <img src="hero-3d.png" alt="3D App Icon" class="hero-3d" />
+          <aside class="hero-card">
+            <h3>التقنيات الحالية</h3>
+            <p>Flutter للموبايل، Firebase للمصادقة والبيانات، و Python / PHP للباك إند والـ APIs.</p>
+            <div class="chip-row">
+              <span class="chip">Flutter</span>
+              <span class="chip">Firebase</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">Python</span>
+              <span class="chip">PHP</span>
+              <span class="chip">Git & GitHub</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- SKILLS EN -->
+      <section id="skills-en" data-lang-block="en">
+        <h2><span>//</span> Skills</h2>
+        <p class="section-sub">Technologies I use to build full stack solutions.</p>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Mobile</h3>
+            <p>Flutter, Firebase, local storage, clean architecture.</p>
+          </div>
+          <div class="skill-card">
+            <h3>Frontend</h3>
+            <p>HTML, CSS, JavaScript, responsive layouts, dashboards.</p>
+          </div>
+          <div class="skill-card">
+            <h3>Backend & APIs</h3>
+            <p>PHP / Laravel basics, Node.js basics, REST APIs, JSON.</p>
+          </div>
+          <div class="skill-card">
+            <h3>Automation & Bots</h3>
+            <p>Telegram bots, Messenger bots, integrations with external APIs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS AR -->
+      <section id="skills-ar" data-lang-block="ar" dir="rtl">
+        <h2><span>//</span> المهارات</h2>
+        <p class="section-sub">
+          التقنيات التي أستخدمها لبناء حلول متكاملة من الواجهة حتى قاعدة البيانات.
         </p>
-        <div class="hero-buttons">
-          <a class="btn" href="#projects">
-            View Projects
-          </a>
-          <a class="btn outline" href="mailto:muheb.kn@gmail.com">
-            Contact Me
-          </a>
-          <a class="btn outline" href="#cv">
-            Download CV (EN / AR / DE)
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>تطبيقات الموبايل</h3>
+            <p>Flutter، Firebase، تخزين محلي، بنية نظيفة وقابلة للتوسع.</p>
+          </div>
+          <div class="skill-card">
+            <h3>الواجهة الأمامية</h3>
+            <p>HTML و CSS و JavaScript وتصميم واجهات متجاوبة ولوحات تحكم.</p>
+          </div>
+          <div class="skill-card">
+            <h3>الباك إند وواجهات API</h3>
+            <p>أساسيات Laravel / PHP و Node.js، وواجهات REST و JSON.</p>
+          </div>
+          <div class="skill-card">
+            <h3>الأتمتة والبوتات</h3>
+            <p>بوتات تيليغرام، ماسنجر، وربط الأنظمة مع خدمات وخارجية.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS EN -->
+      <section id="projects-en" data-lang-block="en">
+        <h2><span>//</span> Selected Projects</h2>
+        <p class="section-sub">A sample of the projects I have been working on.</p>
+
+        <div class="projects-grid">
+          <!-- Masrofate -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">Masrofate – Personal Finance Tracker</div>
+              <span class="project-tag">Flutter · Firebase</span>
+            </div>
+            <p>
+              Cross-platform mobile app to track daily expenses, categories, and monthly statistics.
+              Supports Google Sign-In and cloud sync using Firebase.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/muhebkn/masrofate-finance-app" target="_blank">GitHub</a>
+            </div>
+          </article>
+
+          <!-- SparkWash -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">SparkWash – Car Wash Booking App</div>
+              <span class="project-tag">Flutter · REST API</span>
+            </div>
+            <p>
+              Flutter app that allows customers to book car wash appointments, choose services,
+              and track booking history and status.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/muhebkn/sparkwash-carwash-booking" target="_blank">GitHub</a>
+            </div>
+          </article>
+
+          <!-- SmartComplaints -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">SmartComplaints – Telegram Complaints Bot</div>
+              <span class="project-tag">Python · Bot API</span>
+            </div>
+            <p>
+              Telegram bot to collect maintenance complaints from users, categorize them,
+              and export them to a spreadsheet or database for supervisors.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/muhebkn/smart-complaints-telegram-bot" target="_blank">GitHub</a>
+            </div>
+          </article>
+
+          <!-- AutoReply Pro -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">AutoReply Pro – Facebook Messenger Auto Responder</div>
+              <span class="project-tag">Python · Flask</span>
+            </div>
+            <p>
+              Flask-based webhook app that integrates with Facebook Messenger to send automated replies,
+              handle FAQs, and log messages.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/muhebkn/autoreplypro-facebook-messenger-bot" target="_blank">GitHub</a>
+            </div>
+          </article>
+
+          <!-- DevSpot -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">DevSpot – Personal Portfolio Website</div>
+              <span class="project-tag">HTML · CSS · JS</span>
+            </div>
+            <p>
+              Modern responsive one-page portfolio website built with HTML, CSS, and vanilla JS
+              to showcase projects, skills, and contact information.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/muhebkn/devspot-portfolio-website" target="_blank">GitHub</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PROJECTS AR -->
+      <section id="projects-ar" data-lang-block="ar" dir="rtl">
+        <h2><span>//</span> الأعمال المختارة</h2>
+        <p class="section-sub">مجموعة من أهم المشاريع التي عملت عليها.</p>
+
+        <div class="projects-grid">
+          <!-- Masrofate -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">Masrofate – تطبيق إدارة المصروفات</div>
+              <span class="project-tag">Flutter · Firebase</span>
+            </div>
+            <p>
+              تطبيق موبايل متعدد المنصات لمتابعة المصروفات اليومية والتصنيفات والإحصائيات الشهرية
+              مع تسجيل الدخول بحساب Google والمزامنة عبر Firebase.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/muhebkn/masrofate-finance-app" target="_blank">كود GitHub</a>
+            </div>
+          </article>
+
+          <!-- SparkWash -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">SparkWash – حجز مواعيد مغسلة سيارات</div>
+              <span class="project-tag">Flutter · REST API</span>
+            </div>
+            <p>
+              تطبيق Flutter لحجز مواعيد غسيل السيارات، اختيار الخدمات، ومتابعة حالة الحجز وسجله.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/muhebkn/sparkwash-carwash-booking" target="_blank">كود GitHub</a>
+            </div>
+          </article>
+
+          <!-- SmartComplaints -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">SmartComplaints – بوت شكاوى تيليغرام</div>
+              <span class="project-tag">Python · Bot API</span>
+            </div>
+            <p>
+              بوت تيليغرام لجمع بلاغات الصيانة من المستخدمين وتصنيفها وحفظها في قاعدة بيانات
+              أو ملف Google Sheets مع إمكانية التصدير لـ Excel.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/muhebkn/smart-complaints-telegram-bot" target="_blank">كود GitHub</a>
+            </div>
+          </article>
+
+          <!-- AutoReply Pro -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">AutoReply Pro – رد تلقائي لماسنجر فيسبوك</div>
+              <span class="project-tag">Python · Flask</span>
+            </div>
+            <p>
+              تطبيق Webhook مبني بإطار Flask يتكامل مع Facebook Messenger لإرسال ردود آلية
+              على الأسئلة الشائعة وتسجيل الرسائل.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/muhebkn/autoreplypro-facebook-messenger-bot" target="_blank">كود GitHub</a>
+            </div>
+          </article>
+
+          <!-- DevSpot -->
+          <article class="project-card">
+            <div class="project-header">
+              <div class="project-title">DevSpot – موقع Portfolio شخصي</div>
+              <span class="project-tag">HTML · CSS · JS</span>
+            </div>
+            <p>
+              موقع شخصي بصفحة واحدة متجاوبة لعرض المهارات والمشاريع ووسائل التواصل.
+            </p>
+            <div class="project-links">
+              <a href="https://github.com/muhebkn/devspot-portfolio-website" target="_blank">كود GitHub</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CV EN -->
+      <section id="cv-en" data-lang-block="en">
+        <h2><span>//</span> CV</h2>
+        <p class="section-sub">Download a PDF version of my resume.</p>
+        <div class="cv-card">
+          <p style="font-size:.9rem; color:var(--muted); margin-bottom:.8rem;">
+            You can download my latest CV as a PDF file:
+          </p>
+          <!-- عدّل مسار ملف الـ PDF حسب مكانه في الريبو -->
+          <a class="btn" href="Muheb-Kirwan-CV-EN.pdf" download>
+            Download CV (EN)
           </a>
         </div>
-      </div>
-      <aside class="hero-card">
-        <h3 style="font-size:1rem; margin-bottom:0.4rem;">Current Tech Focus</h3>
-        <p style="font-size:0.83rem; color:#9ca3af;">
-          Flutter for cross-platform apps, Firebase for authentication & data,
-          and web technologies for dashboards and admin panels.
+      </section>
+
+      <!-- CV AR -->
+      <section id="cv-ar" data-lang-block="ar" dir="rtl">
+        <h2><span>//</span> السيرة الذاتية</h2>
+        <p class="section-sub">
+          حمّل نسخة PDF من السيرة الذاتية للاطلاع السريع أو الإرسال لأصحاب العمل.
         </p>
-        <div class="hero-chip-row">
-          <span class="chip">Flutter</span>
-          <span class="chip">Firebase</span>
-          <span class="chip">REST APIs</span>
-          <span class="chip">JavaScript</span>
-          <span class="chip">PHP</span>
-          <span class="chip">Python</span>
-          <span class="chip">Git & GitHub</span>
+        <div class="cv-card">
+          <p style="font-size:.9rem; color:var(--muted); margin-bottom:.8rem;">
+            يمكنك تحميل أحدث نسخة من الـ CV بصيغة PDF:
+          </p>
+          <!-- يمكنك وضع CV عربي أو نفس الملف -->
+          <a class="btn" href="Muheb-Kirwan-CV-AR.pdf" download>
+            تحميل السيرة الذاتية (عربي)
+          </a>
         </div>
-      </aside>
-    </section>
+      </section>
 
-    <!-- ABOUT & SKILLS -->
-    <section id="about">
-      <h2><span>//</span> About Me</h2>
-      <p class="section-sub">
-        Senior Full Stack Developer with a strong focus on delivering complete solutions, from UI/UX to backend and deployment.
-      </p>
-      <div class="two-col">
-        <div class="card">
-          <h3>Who I am</h3>
-          <p>
-            My name is <strong>Muheb Kirwan</strong>. I build mobile and web applications, backend APIs,
-            automation bots, and analytics dashboards. I like to work on clear, maintainable codebases and
-            to design architectures that can grow over time.
-          </p>
-          <br />
-          <p>
-            I have experience working independently and in teams, collaborating with non-technical stakeholders,
-            and turning business requirements into real, usable software.
-          </p>
+      <!-- CONTACT EN -->
+      <section id="contact-en" data-lang-block="en">
+        <h2><span>//</span> Contact</h2>
+        <p class="section-sub">Let’s talk about your next project or remote opportunity.</p>
+        <div class="contact-box">
+          For collaboration or job opportunities, feel free to reach out:<br /><br />
+          <strong>Email:</strong> <a href="mailto:muheb.kn@gmail.com">muheb.kn@gmail.com</a>
         </div>
-        <div class="card" id="skills">
-          <h3>Key Skills</h3>
-          <div class="skills-grid">
-            <div class="skill-item">
-              <strong>Mobile (Flutter)</strong>
-              <p>Cross-platform apps, state management, clean architecture, Firebase integration.</p>
-            </div>
-            <div class="skill-item">
-              <strong>Frontend</strong>
-              <p>HTML, CSS, JavaScript, responsive UI, dashboards and admin layouts.</p>
-            </div>
-            <div class="skill-item">
-              <strong>Backend & APIs</strong>
-              <p>REST APIs, PHP/Laravel basics, Node.js basics, Firebase Functions.</p>
-            </div>
-            <div class="skill-item">
-              <strong>Databases</strong>
-              <p>Firestore, MySQL, SQLite, structured data modeling.</p>
-            </div>
-            <div class="skill-item">
-              <strong>Automation & Bots</strong>
-              <p>Telegram bots, Messenger bots, task automation with Python.</p>
-            </div>
-            <div class="skill-item">
-              <strong>Tools & Workflow</strong>
-              <p>Git/GitHub, Postman, Android Studio, VS Code, remote collaboration.</p>
-            </div>
-          </div>
+      </section>
+
+      <!-- CONTACT AR -->
+      <section id="contact-ar" data-lang-block="ar" dir="rtl">
+        <h2><span>//</span> التواصل</h2>
+        <p class="section-sub">جاهز لنقاش فرصة عمل عن بعد أو مشروع جديد.</p>
+        <div class="contact-box">
+          للتعاون أو فرص العمل يمكن التواصل عبر:<br /><br />
+          <strong>البريد الإلكتروني:</strong>
+          <a href="mailto:muheb.kn@gmail.com">muheb.kn@gmail.com</a>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <h2><span>//</span> Selected Projects</h2>
-      <p class="section-sub">
-        A selection of projects highlighting mobile development, web platforms, and automation.
-      </p>
-
-      <div class="projects-grid">
-        <!-- Masrofate -->
-        <article class="project-card">
-          <div class="project-header">
-            <div class="project-title">Masrofate – Personal Finance Management</div>
-            <span class="project-tag">Flutter · Firebase</span>
-          </div>
-          <p>
-            Cross-platform finance tracking app with Google Sign-In, Firestore integration,
-            expense categories, and monthly analytics.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/muhebkn/masrofate-finance-app" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <!-- SparkWash -->
-        <article class="project-card">
-          <div class="project-header">
-            <div class="project-title">SparkWash – Car Wash Booking System</div>
-            <span class="project-tag">Flutter · REST API</span>
-          </div>
-          <p>
-            Car wash booking app where users select services, choose a time slot,
-            and manage their booking history with a clean UI.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/muhebkn/sparkwash-carwash-booking" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <!-- Medica -->
-        <article class="project-card">
-          <div class="project-header">
-            <div class="project-title">Medica – Medical Appointment App</div>
-            <span class="project-tag">Flutter · Firebase</span>
-          </div>
-          <p>
-            Appointment booking application for doctors with notification reminders,
-            doctor profiles, and appointment tracking.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/muhebkn/medica" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <!-- TechStore -->
-        <article class="project-card">
-          <div class="project-header">
-            <div class="project-title">TechStore – E-Commerce Web Platform</div>
-            <span class="project-tag">Web · PHP · MySQL</span>
-          </div>
-          <p>
-            Full e-commerce platform with product catalog, cart, orders, and an admin panel
-            for managing inventory and sales.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/muhebkn/techstore" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <!-- SmartDashboard -->
-        <article class="project-card">
-          <div class="project-header">
-            <div class="project-title">SmartDashboard – Analytics Admin Panel</div>
-            <span class="project-tag">Web · JS · Charts</span>
-          </div>
-          <p>
-            Analytics dashboard for visualizing KPIs, financial metrics, and user activity
-            using interactive charts and filters.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/muhebkn/smart-dashboard" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <!-- SmartComplaints -->
-        <article class="project-card">
-          <div class="project-header">
-            <div class="project-title">SmartComplaints – Automation Telegram Bot</div>
-            <span class="project-tag">Python · Bot API</span>
-          </div>
-          <p>
-            Telegram bot that collects complaints, stores them, and exports weekly reports
-            for supervisors to review and follow up.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/muhebkn/smart-complaints-bot" target="_blank">GitHub</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <h2><span>//</span> Experience</h2>
-      <p class="section-sub">
-        Roles and responsibilities that shaped my experience as a Senior Full Stack Developer.
-      </p>
-      <div class="timeline">
-        <div class="timeline-item">
-          <h3>Senior Full Stack Developer – Freelancer</h3>
-          <div class="timeline-meta">2019 – Present · Remote</div>
-          <p>
-            Building mobile apps, dashboards, and automation systems for clients.
-            Designing backends, integrating cloud services, and ensuring performance
-            and maintainability.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CV DOWNLOAD PLACEHOLDER -->
-    <section id="cv">
-      <h2><span>//</span> CV Downloads</h2>
-      <p class="section-sub">
-        You can request my CV in English, Arabic, or German. Download links can be added here later.
-      </p>
-      <div class="card">
-        <p>
-          • CV (English) – <em>available on request</em><br />
-          • السيرة الذاتية (عربي) – <em>متاحة عند الطلب</em><br />
-          • Lebenslauf (Deutsch) – <em>auf Anfrage verfügbar</em>
-        </p>
-        <!--
-          لاحقاً عندما ترفع ملفات PDF على GitHub أو Google Drive:
-          استبدل الروابط هنا مثلاً:
-          <p><a href="LINK_TO_EN_PDF" target="_blank">Download English CV (PDF)</a></p>
-        -->
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2><span>//</span> Contact</h2>
-      <p class="section-sub">
-        Feel free to reach out regarding remote roles, freelance projects, or collaboration.
-      </p>
-      <div class="contact-box">
-        For collaboration or job opportunities, you can contact me directly:<br /><br />
-        <strong>Email:</strong>
-        <a href="mailto:muheb.kn@gmail.com">muheb.kn@gmail.com</a><br />
-        <strong>GitHub:</strong>
-        <a href="https://github.com/muhebkn" target="_blank">github.com/muhebkn</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year"></span> Muheb Kirwan · Senior Full Stack Developer
-  </footer>
+    <footer>
+      © <span id="year"></span> Muheb Kirwan. All rights reserved.
+    </footer>
+  </div>
 
   <script>
+    // سنة الفوتر
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // تبديل اللغة
+    const langButtons = document.querySelectorAll("[data-lang-btn]");
+    const langBlocks = document.querySelectorAll("[data-lang-block]");
+
+    function setLang(lang) {
+      langButtons.forEach(btn => {
+        btn.classList.toggle("active", btn.getAttribute("data-lang-btn") === lang);
+      });
+      langBlocks.forEach(block => {
+        const blockLang = block.getAttribute("data-lang-block");
+        block.classList.toggle("active", blockLang === lang);
+      });
+      // ضبط اتجاه الصفحة
+      document.documentElement.lang = lang === "ar" ? "ar" : "en";
+      document.body.dir = lang === "ar" ? "rtl" : "ltr";
+    }
+
+    langButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        setLang(btn.getAttribute("data-lang-btn"));
+      });
+    });
+
+    // اللغة الافتراضية
+    setLang("en");
   </script>
 </body>
 </html>
